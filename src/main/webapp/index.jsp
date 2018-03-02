@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>Voy a cabiar otra vez</p>
+                    <p>Voy a cabiar por 3ª vez</p>
                     <a class="btn btn-primary btn-lg" href="montaje.jsp" role="button">Montaje »</a>
                 </div>
                 <div class="col-md-6">
