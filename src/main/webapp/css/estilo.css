@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-feb-2018, 11:12:25
+    Author     : delag
+*/
+
+i{
+    margin: 10px 5px 0 0;
+}
+
+.btn:hover{
+    background-color: #d61919;
+}
+.btn{
+    background-color:#8a0e0e;
+    color: white;
+}
+hconf{
+    color:white;
+    font-size: 60pt;
+
+}
+.container{
+    align-content: center;
+    width: auto;
+}
+
+
+.fixed-bottom{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    
+}
+.fixed-top{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    
+}
+
+.jumbotron{
+    margin-top: 60px;
+    font-family: 'Roboto Mono', monospace;   
+    background: url(../imagenes/Configurador.jpg);
+    background-repeat: no-repeat;
+    color:white;
+    font-size: 14pt;
+    background-size: cover;
+
+}
+.img-responsive{
+    max-width: 100%;
+    height: auto;
+
+}
+
+
+.nav {
+    float:right;
+    font-size:12pt;
+    color: white;
+}
+.l{
+    font-size:18pt;
+    font-family: 'Roboto Mono', monospace;
+    color:white;
+}
+
+.navbar{
+
+    margin-top:1px;
+    margin-bottom:1px;
+    background-color:#424242;
+    color:white;
+}
+.h{
+    font-family: 'Roboto Mono', monospace; 
+    color:white;
+}
