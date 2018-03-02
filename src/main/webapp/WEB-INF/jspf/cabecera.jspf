@@ -1,0 +1,28 @@
+
+<nav class="navbar fixed-top">
+    <nav class="l">      
+        <i class="fas fa-microchip fa-fw"></i>Configurador 
+        <nav class=" nav navbar-nav">
+            <li class="presentation"><a class="h" href="index.jsp">Inicio</a></li>
+            <li class="presentation"><a class="h" href="productos.jsp">Productos</a></li>
+            <li class="presentation"><a class="h" href="montaje.jsp">Montaje</a></li>
+            <li class="presentation"><a class="h" href="">Pedido</a></li>
+            <li class="presentation"><a class="h" href="perfil.jsp">Perfil</a></li>
+        </nav>
+    </nav>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="hconf">Configurador</h1
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
