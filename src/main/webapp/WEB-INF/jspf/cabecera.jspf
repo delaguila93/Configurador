@@ -1,28 +1,35 @@
+<%-- 
+    Document   : cabecera.jpsf
+    Created on : 26-feb-2018, 15:00:39
+    Author     : José María del Águila López, Rafael Galán Ruiz
+--%>
 
-<nav class="navbar fixed-top">
-    <nav class="l">      
-        <i class="fas fa-microchip fa-fw"></i>Configurador 
-        <nav class=" nav navbar-nav">
-            <li class="presentation"><a class="h" href="index.jsp">Inicio</a></li>
-            <li class="presentation"><a class="h" href="productos.jsp">Productos</a></li>
-            <li class="presentation"><a class="h" href="montaje.jsp">Montaje</a></li>
-            <li class="presentation"><a class="h" href="">Pedido</a></li>
-            <li class="presentation"><a class="h" href="perfil.jsp">Perfil</a></li>
-        </nav>
-    </nav>
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="row">
+        <div class="container">
+            <div class="row">  
+                <nav class="l">
+                    <i class="fas fa-microchip fa-fw"></i>
+                </nav>
+                    <nav class="nav navbar-nav">
+                        <li class="presentation"><a class="h" href="index.jsp">Inicio</a></li>
+                        <li class="presentation"><a class="h" href="productos.jsp">Productos</a></li>
+                        <li class="presentation"><a class="h" href="cesta.jsp">Cesta</a></li>
+                        <li class="presentation"><a class="h" href="perfil.jsp">Acceder</a></li>
+                    </nav>      
+            </div>
+        </div>
+    </div>    
 </nav>
-<div class="container">
-    <div class="jumbotron">
-        <h1 class="hconf">Configurador</h1
+<div class="jumbotron"><%--class="jumbotron"--%>
+    <div class="container">
+        <h1 class="hconf">ujaDAW</h1>
+        <h2 class="hconf">Tienda en informática</h2>
     </div>
 </div>
+  
 
 
-
-
-
-
-
-
+ 
 
 

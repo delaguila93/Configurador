@@ -4,3 +4,9 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet"  type="text/css" href="css/estilo.css">
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+<%--<link rel="icon" href="https://getbootstrap.com/favicon.ico">--%>
+<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="carousel.css" rel="stylesheet">
+<%--<link href="sticky-footer.css" rel="stylesheet">--%>
+

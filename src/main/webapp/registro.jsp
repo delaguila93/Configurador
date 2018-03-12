@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registro
+    Document   : registro.jsp
     Created on : 26-feb-2018, 19:27:49
-    Author     : delag
+    Author     : José María del Águila López, Rafael Galán Ruiz
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/styles.jspf" %>
-        <title>Configurador - Registro</title>
+        <title>Registro</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/cabecera.jspf" %>
@@ -19,14 +19,14 @@
                 <div class=" col-md-6 col-md-offset-3">
                     <div class="well center-block">                     
                         <form method="POST">
-                            <label>Correo</label><input name="correo" value="" class="form-control" type="email">
-                            <label>Nombre</label><input name="nombre" value="" class="form-control" >
-                            <label>Apellidos</label><input name="apellidos" value="" class="form-control" >
-                            <label>Fecha de nacimiento</label><input name="fnac"value="" class="form-control" type="date">
-                            <label>Contraseña</label><input name="contraseña" value="" class="form-control" type="password">                           
+                            <label><p class="h4">Correo</p></label><input name="correo" value="" class="form-control" type="email">
+                            <label><p class="h4">Nombre</p></label><input name="nombre" value="" class="form-control" >
+                            <label><p class="h4">Apellidos</p></label><input name="apellidos" value="" class="form-control" >
+                            <label><p class="h4">Fecha de nacimiento</p></label><input name="fnac"value="" class="form-control" type="date">
+                            <label><p class="h4">Contraseña</p></label><input name="contraseña" value="" class="form-control" type="password">                           
                         </form>  
                         <br>
-                        <a href="perfilUsuario.jsp" ><center><button type="submit" class="btn btn-default">Registro</button></center></a>
+                        <a href="perfilUsuario.jsp" ><center><button type="submit" class="btn btn-default"><p class="h4">Registro</p></button></center></a>
                     </div>                  
                 </div>
             </div>

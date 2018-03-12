@@ -1,10 +1,13 @@
+<%-- 
+    Document   : pie.jpsf
+    Created on : 26-feb-2018, 15:15:17
+    Author     : José María del Águila López, Rafael Galán Ruiz
+--%>
 
 
-<nav class="navbar fixed-bottom">   
-    <i class="fab fa-facebook-f fa-2x fa-fw"></i>  
-    <i class="fab fa-twitter fa-2x fa-fw"></i>    
-    <div class="nav navbar-nav">
-        <li class="presentation"><a class="h" href="#">Conocenos</a></li>
-        <li class="presentation"><a class="h" href="https://www.google.es/maps/place/PcComponentes/@37.828006,-1.3898567,17z/data=!3m1!4b1!4m5!3m4!1s0xd648ef041b23d07:0xb905c61ac3a266fd!8m2!3d37.828006!4d-1.387668">Donde estamos</a></li>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-botton bg-dark">
+        <div class="container">
+            <h2>Desarrollo de Aplicaciones Web</h2>
+            <h4>Proyecto: TienaInformatica</h4>
+        </div>
+    </nav>
