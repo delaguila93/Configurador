@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="WEB-INF/jspf/styles.jspf" %>
+        <%@include file="/WEB-INF/jspf/styles.jspf" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Productos</title>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/cabecera.jspf" %>
+        <%@include file="/WEB-INF/jspf/cabecera.jspf" %>
         <div class="container">
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar" 
@@ -92,6 +92,6 @@
             </div>
         </div>
 
-        <%@include file="WEB-INF/jspf/pie.jspf" %>       
+        <%@include file="/WEB-INF/jspf/pie.jspf" %>       
     </body>
 </html>
