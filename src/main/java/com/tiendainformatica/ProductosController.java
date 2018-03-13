@@ -7,7 +7,10 @@ package com.tiendainformatica;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -25,16 +28,18 @@ import sun.rmi.runtime.Log;
 public class ProductosController extends HttpServlet {
 
     private ProductoDAO productoDAO;
+    private CategoriaDAO categoriaDAO;
     private final String srvViewPath = "/WEB-INF/productos";
-    private String svrUrl;
+    private String srvUrl;
+    private static final Logger Log = Logger.getLogger(ProductosController.class.getName());
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
 
         super.init(servletConfig);
-
-        svrUrl = servletConfig.getServletContext().getContextPath() + "/productos";
+        srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
         productoDAO = new ProductoDAOList();
+        categoriaDAO = new CategoriaDAO();
 
     }
 
@@ -50,8 +55,11 @@ public class ProductosController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
 
-        processRequest(request, response);
+        request.setAttribute("srvUrl", srvUrl);
+        request.setAttribute("categorias", categoriaDAO.buscaTodos().toArray());
 
     }
 
@@ -67,23 +75,26 @@ public class ProductosController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
+        processRequest(request, response);
+
         RequestDispatcher rd;
 
         //Detect current servlet action
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
+        Log.log(Level.INFO, "Petición GET {0}", action);
 
         switch (action) {
             case "/visualizaCategoria": {
-                String categoria = request.getParameter(action);
-                request.setAttribute("productosCategoria", productoDAO.buscaCategoria(action));
-                rd = request.getRequestDispatcher(srvViewPath + "/productosCategoria.jsp");
+
+                String categoria = request.getParameter("categoria");
+                request.setAttribute("productosCategoria", productoDAO.buscaCategoria(categoria));
+                request.setAttribute("categoria", categoria);
+                Log.log(Level.INFO, "Petición GET {0}", categoria);
+                rd = request.getRequestDispatcher(srvViewPath + "/visualizaCategoria.jsp");
                 break;
             }
             default: {
-                /*List<Cliente> lc = clienteDAO.buscaTodos();
-                    request.setAttribute("clientes", lc);*/
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
             }
@@ -109,10 +120,10 @@ public class ProductosController extends HttpServlet {
         //Detect current servlet action
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
 
-        //Log.log(Level.INFO, "Petición GET {0}", action);
         switch (action) {
+
             default: {
-                response.sendRedirect(svrUrl);
+                response.sendRedirect(srvUrl);
             }
         }
     }
