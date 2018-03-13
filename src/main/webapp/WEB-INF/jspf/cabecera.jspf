@@ -4,6 +4,8 @@
     Author     : José María del Águila López, Rafael Galán Ruiz
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="row">
         <div class="container">
@@ -12,7 +14,7 @@
                     <i class="fas fa-microchip fa-fw"></i>
                 </nav>
                     <nav class="nav navbar-nav">
-                        <li class="presentation"><a class="h" href="${srvUrl}">Inicio</a></li>
+                        <li class="presentation"><a class="h" href="<c:url value='/'/>">Inicio</a></li>
                         <li class="presentation"><a class="h" href="productos">Productos</a></li>
                         <li class="presentation"><a class="h" href="cesta.jsp">Cesta</a></li>
                         <li class="presentation"><a class="h" href="perfil.jsp">Acceder</a></li>

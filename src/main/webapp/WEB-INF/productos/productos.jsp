@@ -4,6 +4,7 @@
     Author     : José María del Águila López, Rafael Galán Ruiz
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,12 +19,11 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar" 
                      <ul class="nav flex-colum">
-                        <div class="btn-group-vertical">                           
-                            <center><a href='${svrUrl}/visualizaCategoria' class="btn btn-default" style='width:170px; height:50px'><p class="h5">Placa base</p></a></center>
-                            <center><a href="productos.jsp"><button type="submit" class="btn btn-default" style='width:170px; height:50px'><p class="h5">Procesadores</p></button></a></center>
-                            <center><a href="productos.jsp"><button type="submit" class="btn btn-default" style='width:170px; height:50px'><p class="h5">Memoria RAM</p></button></a></center>
-                            <center><a href="productos.jsp"><button type="submit" class="btn btn-default" style='width:170px; height:50px'><p class="h5">Tarjeta Gráfica</p></button></a></center>
-                            <center><a href="productos.jsp"><button type="submit" class="btn btn-default" style='width:170px; height:50px'><p class="h5">Gaming</p></button></a></center>
+                         
+                        <div class="btn-group-vertical">   
+                            <c:forEach var="m" items="${categorias}">
+                                <center><a href='${srvUrl}/visualizaCategoria' class="btn btn-default" style='width:170px; height:50px' name="categoria"><p class="h5">${m}</p></a></center>
+                            </c:forEach>
                         </div>
                     </ul>
 

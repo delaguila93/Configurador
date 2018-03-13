@@ -19,7 +19,8 @@ public class ProductoDAOList implements ProductoDAO {
 
     public ProductoDAOList() {
         if (productos == null) {
-
+            productos=new ArrayList<>();
+            productos.add(new Producto(idProducto++,"ASUS - Placa base",99.99,"Placa Base",100));
         }
     }
 
