@@ -7,6 +7,5 @@
 
 <%--<link rel="icon" href="https://getbootstrap.com/favicon.ico">--%>
 <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="carousel.css" rel="stylesheet">
 <%--<link href="sticky-footer.css" rel="stylesheet">--%>
 

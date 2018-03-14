@@ -7,7 +7,7 @@ package com.tiendainformatica;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,28 +18,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.rmi.runtime.Log;
 
 /**
  *
  * @author delag
  */
-@WebServlet("/productos/*")
-public class ProductosController extends HttpServlet {
+@WebServlet("/clientes/*")
+public class ClientesController extends HttpServlet {
 
-    private ProductoDAO productoDAO;
-    private CategoriaDAO categoriaDAO;
-    private final String srvViewPath = "/WEB-INF/productos";
+    private ClienteDAO clientes;
+    private final String srvViewPath = "/WEB-INF/clientes";
     private String srvUrl;
     private static final Logger Log = Logger.getLogger(ProductosController.class.getName());
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
-
         super.init(servletConfig);
-        srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
-        productoDAO = new ProductoDAOList();
-        categoriaDAO = new CategoriaDAO();
+        srvUrl = servletConfig.getServletContext().getContextPath() + "/clientes";
+        clientes = new ClienteDAOList();
 
     }
 
@@ -57,9 +53,7 @@ public class ProductosController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html");
         request.setCharacterEncoding("UTF-8");
-
         request.setAttribute("srvUrl", srvUrl);
-        request.setAttribute("categorias", categoriaDAO.buscaTodos().toArray());
 
     }
 
@@ -75,28 +69,28 @@ public class ProductosController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         processRequest(request, response);
+        RequestDispatcher rd = null;
 
-        RequestDispatcher rd;
-
-        //Detect current servlet action
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
         Log.log(Level.INFO, "Petición GET {0}", action);
 
         switch (action) {
-            case "/visualizaCategoria": {
-                String categoria = request.getParameter("categoria");
-                request.setAttribute("productosCategoria", productoDAO.buscaCategoria(categoria));
-                request.setAttribute("categoria", categoria);
-                rd = request.getRequestDispatcher(srvViewPath + "/visualizaCategoria.jsp");
+            case "/crea":
+                Cliente c = new Cliente();
+                request.setAttribute("cliente", c);
+                rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
                 break;
-            }
-            default: {
-                rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
+            case "/listado":
+                List<Cliente> lc = clientes.buscaTodos();
+                request.setAttribute("clientes", lc);
+                rd = request.getRequestDispatcher(srvViewPath + "/listadoClientes.jsp");
                 break;
-            }
+            default:
+                rd = request.getRequestDispatcher(srvViewPath + "/perfil.jsp");
+                break;
         }
+
         rd.forward(request, response);
     }
 
@@ -119,11 +113,48 @@ public class ProductosController extends HttpServlet {
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
 
         switch (action) {
-
+            case "/crea": {     //ALTA DE UN CLIENTE
+                Cliente c = new Cliente();
+                if (validateCustomer(request, c)) {
+                    clientes.crea(c); //Create new client
+                    //Post-sent-redirect
+                    Log.log(Level.INFO, "Petición GET {0}", action);
+                    response.sendRedirect(srvUrl + "/listado");
+                } else { //Show form with validation errores
+                    request.setAttribute("cliente", c);
+                    rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
+                    rd.forward(request, response);
+                }
+                break;
+            }
             default: {
                 response.sendRedirect(srvUrl);
             }
         }
+    }
+
+    private boolean validateCustomer(HttpServletRequest request, Cliente c) {
+        boolean valido = true;
+        //Capturamos y convertimos datos
+        int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+        String nombre = Util.getParam(request.getParameter("nombre"), "");
+        String apellidos = Util.getParam(request.getParameter("apellidos"), "");
+        String correo = Util.getParam("correo", "");
+        String fNac = Util.getParam(request.getParameter("fnac"), "");
+
+        //Asignamos datos al bean
+        c.setId(id);
+        c.setNombre(nombre);
+        c.setApellidos(apellidos);
+        c.setCorreo(correo);
+        c.setfNac(fNac);
+        //Validamos Datos
+        if (nombre.length() < 3 || nombre.length() > 50) {
+            request.setAttribute("errNombre", "Nombre no válido");
+            Log.log(Level.INFO, "Enviado Nombre de usuario no válido");
+            valido = false;
+        }
+        return valido;
     }
 
     /**

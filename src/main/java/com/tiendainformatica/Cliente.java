@@ -14,20 +14,34 @@ import java.util.Date;
  */
 public class Cliente implements Serializable {
 
-
-
     private int id;
     private String correo;
     private String nombre;
     private String apellidos;
-    private Date fNac;
-    
-    public Cliente(){
-        this.id=0;
-        this.correo="";
-        this.nombre="";
-        this.apellidos="";
-        this.fNac=null;
+    private String fNac;
+
+    public Cliente() {
+        this.id = 0;
+        this.correo = "";
+        this.nombre = "";
+        this.apellidos = "";
+        this.fNac = "";
+    }
+
+    public Cliente(Cliente c) {
+        this.id = c.id;
+        this.correo = c.correo;
+        this.nombre = c.nombre;
+        this.apellidos = c.apellidos;
+        this.fNac = c.fNac;
+    }
+
+    public Cliente(int _id, String _corr, String _nom, String _apell, String _f) {
+        this.id = _id;
+        this.correo = _corr;
+        this.nombre = _nom;
+        this.apellidos = _apell;
+        this.fNac = _f;
     }
 
     /**
@@ -85,19 +99,18 @@ public class Cliente implements Serializable {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    
-        /**
+
+    /**
      * @return the fNac
      */
-    public Date getfNac() {
+    public String getfNac() {
         return fNac;
     }
 
     /**
      * @param fNac the fNac to set
      */
-    public void setfNac(Date fNac) {
+    public void setfNac(String fNac) {
         this.fNac = fNac;
     }
 }
-

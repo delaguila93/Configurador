@@ -15,7 +15,26 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/cabecera.jspf" %>
-        <h1>${categoria}</h1>
+        <div class="container">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar" 
+                     <ul class="nav flex-colum">                         
+                        <div class="btn-group-vertical">   
+                            <c:forEach var="m" items="${categorias}">
+                                <center><a href='${srvUrl}/visualizaCategoria?categoria=${m}' class="btn btn-default" style='width:170px; height:50px'><p class="h5">${m}</p></a></center>
+                            </c:forEach>
+                        </div>
+                    </ul>
+                </nav>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
+                    <div class="container">
+                        <div class="row">
+                            
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
         <%@include file="/WEB-INF/jspf/pie.jspf" %>          
     </body>
 </html>

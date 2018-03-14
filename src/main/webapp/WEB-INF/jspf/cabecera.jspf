@@ -16,8 +16,8 @@
                     <nav class="nav navbar-nav">
                         <li class="presentation"><a class="h" href="<c:url value='/'/>">Inicio</a></li>
                         <li class="presentation"><a class="h" href="productos">Productos</a></li>
-                        <li class="presentation"><a class="h" href="cesta.jsp">Cesta</a></li>
-                        <li class="presentation"><a class="h" href="perfil.jsp">Acceder</a></li>
+                        <li class="presentation"><a class="h" href="<c:url value='/cesta.jsp'/>">Cesta</a></li>
+                        <li class="presentation"><a class="h" href="clientes">Acceder</a></li>
                     </nav>      
             </div>
         </div>

@@ -1,0 +1,41 @@
+<%-- 
+    Document   : listadoClientes
+    Created on : 14-mar-2018, 12:31:46
+    Author     : delag
+--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="/WEB-INF/jspf/styles.jspf" %>
+        <title>Listado - Clientes</title>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/jspf/cabecera.jspf" %>
+        <div class='container'>
+            <c:if test="${not empty clientes}">
+                <table class="table table-striped">
+                    <tr><th>ID</th><th>Correo</th><th>Apellidos</th><th>Nombre</th>
+                        <th>Fecha de Nacimiento</th><th>Opciones</th></tr>
+                            <c:forEach var="c" items="${clientes}">
+                                <c:set var="qry" value="?id=${c.id}"/>
+                        <tr>
+                            <td>${c.id}</td>
+                            <td>${c.correo}</td>
+                            <td>${c.nombre}</td>
+                            <td>${c.apellidos}</td>
+                            <td>${c.fnac}</td>
+                            <td>
+                                <a class='btn btn-default' href='${srvUrl}/edita${qry}'>Editar</a>&nbsp;
+                                <a class='btn btn-default' href='${srvUrl}/borra${qry}'>Borrar</a>&nbsp;
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+        </div>
+        <%@include file="/WEB-INF/jspf/pie.jspf" %>
+    </body>
+</html>
