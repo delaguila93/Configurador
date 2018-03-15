@@ -86,6 +86,21 @@ public class ClientesController extends HttpServlet {
                 request.setAttribute("clientes", lc);
                 rd = request.getRequestDispatcher(srvViewPath + "/listadoClientes.jsp");
                 break;
+            case "/edita":
+                Cliente ce;
+                int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+                ce = clientes.buscaId(id);
+                request.setAttribute("cliente", ce);
+                rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
+                break;
+            case "/borra": {       //BORRAR CLIENTE
+                int idB = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+                if (idB > 0) {
+                    clientes.borra(idB);
+                }
+                response.sendRedirect(srvUrl + "/listado");
+                return;
+            }
             default:
                 rd = request.getRequestDispatcher(srvViewPath + "/perfil.jsp");
                 break;
@@ -113,10 +128,10 @@ public class ClientesController extends HttpServlet {
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
 
         switch (action) {
-            case "/crea": {     //ALTA DE UN CLIENTE
+            case "/crea": {
                 Cliente c = new Cliente();
                 if (validateCustomer(request, c)) {
-                    clientes.crea(c); //Create new client
+                    clientes.crea(c);
                     //Post-sent-redirect
                     Log.log(Level.INFO, "Petición GET {0}", action);
                     response.sendRedirect(srvUrl + "/listado");
@@ -127,6 +142,18 @@ public class ClientesController extends HttpServlet {
                 }
                 break;
             }
+            case "/edita":
+                Cliente c = new Cliente();
+                if (validateCustomer(request, c)) {
+                    //Aactualizar datos Cliente
+                    clientes.guarda(c);
+                    response.sendRedirect(srvUrl + "/listado");
+                } else { //Show form with validation errores
+                    request.setAttribute("cliente", c);
+                    rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
+                    rd.forward(request, response);
+                }
+                break;
             default: {
                 response.sendRedirect(srvUrl);
             }
@@ -139,7 +166,7 @@ public class ClientesController extends HttpServlet {
         int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
         String nombre = Util.getParam(request.getParameter("nombre"), "");
         String apellidos = Util.getParam(request.getParameter("apellidos"), "");
-        String correo = Util.getParam("correo", "");
+        String correo = Util.getParam(request.getParameter("correo"), "");
         String fNac = Util.getParam(request.getParameter("fnac"), "");
 
         //Asignamos datos al bean

@@ -20,7 +20,7 @@ public class ClienteDAOList implements ClienteDAO {
     public ClienteDAOList(){
         if(clientes==null){
             clientes=new ArrayList<>();
-            clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","12/12/2012"));
+            clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","2012-12-12"));
         }
     }
 
@@ -65,14 +65,14 @@ public class ClienteDAOList implements ClienteDAO {
 
     @Override
     public boolean borra(Integer id) {
-        boolean borrado = false;
-        for (Cliente c : clientes) {
-            if (c.getId() == id) {
-                clientes.remove(c);
-                borrado = true;
+        boolean result=false;
+        for (int i=0; i<clientes.size();i++) {
+            if (clientes.get(i).getId()==id) {
+                clientes.remove(i);
+                result=true;
             }
         }
-        return borrado;
+        return result;
     }
 
 }

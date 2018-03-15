@@ -15,14 +15,14 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/cabecera.jspf" %>
-        
+
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-md-offset-3">
+                <div class="col-md-3 col-md-offset-1">
                     <div class="well">
                         <p class="h4">Para acceder a la plataforma como socio:</p>
                         <br>  
-                        <center><a href='${srvUrl}' ><button type="submit" class="btn btn-default"><p class="h4">Iniciar Sesión</p></button></a></center>
+                        <center><a href='${srvUrl}' ><button type="submit" class="btn btn-default" disabled><p class="h4">Iniciar Sesión</p></button></a></center>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -32,10 +32,17 @@
                         <center><a href='${srvUrl}/crea' ><button type="submit" class="btn btn-default"><p class="h4">Registro</p></button></a></center>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="well">
+                        <p class="h4">De manera temporal se puede ver el listado de socios de la pagina:</p>
+                        <br>  
+                        <center><a href='${srvUrl}/listado' ><button type="submit" class="btn btn-default"><p class="h4">Listado</p></button></a></center>
+                    </div>
+                </div>
             </div>
 
         </div>
-        
+
         <%@include file="/WEB-INF/jspf/pie.jspf" %>
     </body>
 </html>

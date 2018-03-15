@@ -19,14 +19,14 @@
                 <div class=" col-md-6 col-md-offset-3">
                     <div class="well center-block">                     
                         <form method="POST">
-                            <label><p class="h4">Correo</p></label><input name="correo" value="" class="form-control" type="email">
-                            <label><p class="h4">Nombre</p></label><input name="nombre" value="" class="form-control" >
-                            <label><p class="h4">Apellidos</p></label><input name="apellidos" value="" class="form-control" >
-                            <label><p class="h4">Fecha de nacimiento</p></label><input name="fnac"value="" class="form-control" type="date">
-                            <label><p class="h4">Contraseña</p></label><input name="contraseña" value="" class="form-control" type="password">                           
-                        </form>  
-                        <br>                     
-                        <center><a href='${srvUrl}/listado'><button name="enviar" type="submit" class="btn btn-default" ><p class="h4">Registro</p></button></a></center>
+                            <label><p class="h4">Correo</p></label><input name="correo" value="${cliente.correo}" class="form-control" type="email">
+                            <label><p class="h4">Nombre</p></label><input name="nombre" value="${cliente.nombre}" class="form-control" >
+                            <label><p class="h4">Apellidos</p></label><input name="apellidos" value="${cliente.apellidos}" class="form-control" >
+                            <label><p class="h4">Fecha de nacimiento</p></label><input name="fnac"value="${cliente.fNac}" class="form-control" type="date">
+                            <label><p class="h4">Contraseña</p></label><input name="contraseña" value="" class="form-control" type="password">    
+                            <br>
+                            <center><input name="enviar" type="submit" class="btn btn-default btn-lg" value="Registro"></center>
+                        </form>                    
                     </div>                  
                 </div>
             </div>
