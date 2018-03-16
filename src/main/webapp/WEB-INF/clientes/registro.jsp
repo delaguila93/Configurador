@@ -20,12 +20,15 @@
                     <div class="well center-block">                     
                         <form method="POST">
                             <label><p class="h4">Correo</p></label><input name="correo" value="${cliente.correo}" class="form-control" type="email">
+                            <span class='label label-danger'>${errCorreo}</span><br/>
                             <label><p class="h4">Nombre</p></label><input name="nombre" value="${cliente.nombre}" class="form-control" >
+                            <span class='label label-danger'>${errNombre}</span><br/>
                             <label><p class="h4">Apellidos</p></label><input name="apellidos" value="${cliente.apellidos}" class="form-control" >
                             <label><p class="h4">Fecha de nacimiento</p></label><input name="fnac"value="${cliente.fNac}" class="form-control" type="date">
                             <label><p class="h4">Contraseña</p></label><input name="contraseña" value="" class="form-control" type="password">    
                             <br>
-                            <center><input name="enviar" type="submit" class="btn btn-default btn-lg" value="Registro"></center>
+                            <%--<center><a href="${srvUrl}/crea"><button type="submit" class="btn btn-default btn-lg" value="Registro"></button></a></center>--%>
+                            <center><input name="enviar" type="submit" class="btn btn-default btn-lg" value="Registro"></center> 
                         </form>                    
                     </div>                  
                 </div>

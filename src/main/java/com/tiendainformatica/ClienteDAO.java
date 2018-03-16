@@ -11,4 +11,6 @@ package com.tiendainformatica;
  */
 public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
     
+    public boolean comprobarCorreo(String _corr);
+    
 }

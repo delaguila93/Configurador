@@ -23,6 +23,17 @@ public class ClienteDAOList implements ClienteDAO {
             clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","2012-12-12"));
         }
     }
+    
+    @Override
+    public boolean comprobarCorreo(String _corr){
+        boolean encontrado=false;
+        for(Cliente c :clientes){
+            if(c.getCorreo() == null ? _corr == null : c.getCorreo().equals(_corr)){
+                encontrado=true;
+            }
+        }
+        return encontrado;
+    }
 
     @Override
     public Cliente buscaId(Integer id) {
@@ -65,6 +76,7 @@ public class ClienteDAOList implements ClienteDAO {
 
     @Override
     public boolean borra(Integer id) {
+        
         boolean result=false;
         for (int i=0; i<clientes.size();i++) {
             if (clientes.get(i).getId()==id) {

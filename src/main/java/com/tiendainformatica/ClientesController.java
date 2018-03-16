@@ -50,6 +50,7 @@ public class ClientesController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html");
         request.setCharacterEncoding("UTF-8");
@@ -130,12 +131,11 @@ public class ClientesController extends HttpServlet {
         switch (action) {
             case "/crea": {
                 Cliente c = new Cliente();
-                if (validateCustomer(request, c)) {
+                if (validarCliente(request, c)) {
                     clientes.crea(c);
                     //Post-sent-redirect
-                    Log.log(Level.INFO, "Petición GET {0}", action);
                     response.sendRedirect(srvUrl + "/listado");
-                } else { //Show form with validation errores
+                } else {
                     request.setAttribute("cliente", c);
                     rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
                     rd.forward(request, response);
@@ -144,11 +144,10 @@ public class ClientesController extends HttpServlet {
             }
             case "/edita":
                 Cliente c = new Cliente();
-                if (validateCustomer(request, c)) {
-                    //Aactualizar datos Cliente
+                if (validarCliente(request, c)) {
                     clientes.guarda(c);
                     response.sendRedirect(srvUrl + "/listado");
-                } else { //Show form with validation errores
+                } else {
                     request.setAttribute("cliente", c);
                     rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
                     rd.forward(request, response);
@@ -160,7 +159,7 @@ public class ClientesController extends HttpServlet {
         }
     }
 
-    private boolean validateCustomer(HttpServletRequest request, Cliente c) {
+    private boolean validarCliente(HttpServletRequest request, Cliente c) {
         boolean valido = true;
         //Capturamos y convertimos datos
         int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
@@ -169,7 +168,7 @@ public class ClientesController extends HttpServlet {
         String correo = Util.getParam(request.getParameter("correo"), "");
         String fNac = Util.getParam(request.getParameter("fnac"), "");
 
-        //Asignamos datos al bean
+        //Asignamos datos al Cliente
         c.setId(id);
         c.setNombre(nombre);
         c.setApellidos(apellidos);
@@ -181,6 +180,12 @@ public class ClientesController extends HttpServlet {
             Log.log(Level.INFO, "Enviado Nombre de usuario no válido");
             valido = false;
         }
+        if (clientes.comprobarCorreo(correo) == true) {
+            request.setAttribute("errCorreo", "Ese correo ya existe");
+            Log.log(Level.INFO, "Enviado Correo no valido");
+            valido = false;
+        }
+
         return valido;
     }
 
