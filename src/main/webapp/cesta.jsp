@@ -67,7 +67,7 @@
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar"> 
 
                     <div class="btn-group-vertical">   
-                        <p>total</p>
+                        <p>Total</p>
 
 
                     </div>
