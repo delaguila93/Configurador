@@ -40,6 +40,7 @@ public class ProductosController extends HttpServlet {
         srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
         productoDAO = new ProductoDAOList();
         categoriaDAO = new CategoriaDAO();
+        
 
     }
 
@@ -60,6 +61,7 @@ public class ProductosController extends HttpServlet {
 
         request.setAttribute("srvUrl", srvUrl);
         request.setAttribute("categorias", categoriaDAO.buscaTodos().toArray());
+        request.setAttribute("producto", productoDAO.buscaTodos().toArray());
 
     }
 
@@ -91,8 +93,21 @@ public class ProductosController extends HttpServlet {
                 request.setAttribute("categoria", categoria);
                 rd = request.getRequestDispatcher(srvViewPath + "/visualizaCategoria.jsp");
                 break;
+            
             }
+            /*
+            case "/productos":{
+                List<Producto> lp;
+                lp = productoDAO.buscaTodos();
+                request.setAttribute("productoDAO", lp);
+                rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
+                break;
+            }*/
+            
             default: {
+                List<Producto> lp;
+                lp = productoDAO.buscaTodos();
+                request.setAttribute("productoDAO", lp);
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
             }
