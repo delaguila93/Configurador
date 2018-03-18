@@ -21,6 +21,7 @@ public class ClienteDAOList implements ClienteDAO {
         if(clientes==null){
             clientes=new ArrayList<>();
             clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","2012-12-12"));
+            clientes.add(new Cliente(idCliente++,"kkkkkk@jjjj.na","ggggg","tttttt","2052-11-09"));
         }
     }
     
