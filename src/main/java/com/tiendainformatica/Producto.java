@@ -16,32 +16,36 @@ public class Producto implements Serializable {
 
     private int id;
     private String nombre;
+    private String imagen;
+    private String descripcion;
     private double precio;
     private String categoria;
-    private int cantidad;
 
     public Producto() {
         id = 0;
         nombre = " ";
+        imagen = " ";
+        descripcion = " ";
         precio = 0.0;
-        cantidad = 0;
         categoria = " ";
     }
 
-    public Producto(int _id, String _nom, double _prec, String _cat, int _cant) {
+    public Producto(int _id, String _nom, String _img, String _des, double _prec, String _cat) {
         this.id = _id;
         this.nombre = _nom;
+        this.imagen = _img;
+        this.descripcion = _des;
         this.precio = _prec;
         this.categoria = _cat;
-        this.cantidad = _cant;
     }
 
     public Producto(Producto p) {
         this.id = p.id;
         this.nombre = p.nombre;
+        this.imagen = p.imagen;
+        this.descripcion = p.descripcion;
         this.precio = p.precio;
         this.categoria = p.categoria;
-        this.cantidad = p.cantidad;
     }
 
     /**
@@ -57,7 +61,34 @@ public class Producto implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
 
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void set(String descripcion) {
+        this.descripcion = descripcion;
+    }
     /**
      * @return the precio
      */
@@ -86,19 +117,6 @@ public class Producto implements Serializable {
         this.categoria = categoria;
     }
 
-    /**
-     * @return the cantidad
-     */
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    /**
-     * @param cantidad the cantidad to set
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
     /**
      * @return the id
      */
