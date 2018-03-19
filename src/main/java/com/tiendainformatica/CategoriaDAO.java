@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    CategoriaDAO.java
+ * @Author  Jose María del Águila
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
@@ -26,6 +26,7 @@ public class CategoriaDAO {
         return categorias.get(id);
     }
 
+    
     public List<String> buscaTodos() {
         return categorias;
     }

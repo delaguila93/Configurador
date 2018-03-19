@@ -21,14 +21,14 @@
                 <div class="col-md-3 col-md-offset-1">
                     <div class="well">
                         <p class="h4">Para acceder a la plataforma como socio:</p>
-                        <br>  
+                        <br><br>  
                         <center><a href='${srvUrl}' ><button type="submit" class="btn btn-default" disabled><p class="h4">Iniciar Sesión</p></button></a></center>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="well">
                         <p class="h4">Para registrarse como socio en la plataforma:</p>
-                        <br>  
+                        <br><br>  
                         <center><a href='${srvUrl}/crea' ><button type="submit" class="btn btn-default"><p class="h4">Registro</p></button></a></center>
                     </div>
                 </div>

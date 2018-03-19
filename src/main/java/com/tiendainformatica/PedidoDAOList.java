@@ -1,38 +1,54 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    PedidoDAOList.java
+ * @Author  Jose María del Águila López
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
-import java.util.List;
 
-/**
- *
- * @author delag
- */
 public class PedidoDAOList implements PedidoDAO {
 
     private Pedido pedido=null;
     
+    /**
+     * @brief Constructor PedidoDAOList
+     */
     public PedidoDAOList(){
         pedido=new Pedido();
     }
     
+    /**
+     * @brief Función para añadir un producto al pedido
+     * @param p
+     * @return true si el producto se ha añadidio
+     */
     @Override
     public boolean anadeProducto(Producto p) {
         
         return true;
     }
 
+    /**
+     * @brief Función para eliminar un producto del Pedido
+     * @param id
+     * @return true si el pedidio se ha eliminado
+     */
     @Override
     public boolean eliminaProducto(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * @brief Función para eliminar un producto del Pedido
+     * @param id
+     * @return true si el pedidio se ha eliminado
+     */
     @Override
-    public double calculaTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double calculaTotal(Producto p) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double total = 0;
+        total = total + p.getPrecio();
+        return total;
     }
 
     

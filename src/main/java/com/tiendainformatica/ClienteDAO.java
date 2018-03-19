@@ -1,16 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    ClienteDAO.java
+ * @Author  Jose María del Águila
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
-/**
- *
- * @author delag
- */
+
 public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
     
+    /**
+     * @brief Función para coprobar el correo de un cliente
+     * @param _corr
+     * @return true si el correo se ha introducido correctamente
+     */
     public boolean comprobarCorreo(String _corr);
     
 }

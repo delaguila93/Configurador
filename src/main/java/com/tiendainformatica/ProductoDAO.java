@@ -1,17 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    ProductoDAO.java
+ * @Author  Jose María del Águila López
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
 import java.util.List;
 
-/**
- *
- * @author delag
- */
+
 public interface ProductoDAO extends GenericDAO<Producto, Integer> {
     
+    /**
+     * @brief función que devuelve los productos según la categoria dada
+     * @param categoria
+     * @return devuelve una lista de productos con la categoria en común
+     */
     public List<Producto> buscaCategoria(String categoria);
+   
 }

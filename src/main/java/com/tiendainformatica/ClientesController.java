@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    ClienteController.java
+ * @Author  Jose María del Águila
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
@@ -77,16 +77,19 @@ public class ClientesController extends HttpServlet {
         Log.log(Level.INFO, "Petición GET {0}", action);
 
         switch (action) {
+            //Para crear el cliente
             case "/crea":
                 Cliente c = new Cliente();
                 request.setAttribute("cliente", c);
                 rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
                 break;
+            //Para mostrar todos los clientes    
             case "/listado":
                 List<Cliente> lc = clientes.buscaTodos();
                 request.setAttribute("clientes", lc);
                 rd = request.getRequestDispatcher(srvViewPath + "/listadoClientes.jsp");
                 break;
+            //Para editar el cliente
             case "/edita":
                 Cliente ce;
                 int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
@@ -94,7 +97,8 @@ public class ClientesController extends HttpServlet {
                 request.setAttribute("cliente", ce);
                 rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
                 break;
-            case "/borra": {       //BORRAR CLIENTE
+            //Para borrar al cliente
+            case "/borra": {      
                 int idB = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
                 if (idB > 0) {
                     clientes.borra(idB);

@@ -1,22 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    ClienteDAOList.java
+ * @Author  Jose María del Águila
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author delag
- */
+
 public class ClienteDAOList implements ClienteDAO {
 
     private List<Cliente> clientes;
     private static int idCliente = 1;
     
+    /**
+     * @brief Constructor de ClienteDAOList
+     * Los clientes contienen:
+     *                          idCliente
+     *                          Correo
+     *                          Nombre
+     *                          Apellidos
+     *                          Fecha de Nacimiento
+     */
     public ClienteDAOList(){
         if(clientes==null){
             clientes=new ArrayList<>();
@@ -25,6 +31,11 @@ public class ClienteDAOList implements ClienteDAO {
         }
     }
     
+    /**
+     * @brief Función para coprobar el correo de un cliente
+     * @param _corr
+     * @return true si el correo se ha introducido correctamente
+     */
     @Override
     public boolean comprobarCorreo(String _corr){
         boolean encontrado=false;
@@ -36,6 +47,11 @@ public class ClienteDAOList implements ClienteDAO {
         return encontrado;
     }
 
+    /**
+     * @brief Funcion que busca un cliente por su id
+     * @param id
+     * @return el cliente que coincida con el id introducido
+     */
     @Override
     public Cliente buscaId(Integer id) {
         Cliente encontrado = null;
@@ -47,11 +63,20 @@ public class ClienteDAOList implements ClienteDAO {
         return encontrado;
     }
 
+    /**
+     * @brief Funcion que devuelve todos los cliente que hay en la plataforma
+     * @return Una lista con todos los cliente de la plataforma
+     */
     @Override
     public List<Cliente> buscaTodos() {
         return clientes;
     }
 
+    /**
+     * @brief Función para crear un cliente
+     * @param c
+     * @return true cuando el cliente se haya creado
+     */
     @Override
     public boolean crea(Cliente c) {
         Cliente nuevoCliente = new Cliente(c);
@@ -62,6 +87,11 @@ public class ClienteDAOList implements ClienteDAO {
         return true;
     }
 
+    /**
+     * @brief Función para guardar un cliente
+     * @param c
+     * @return True si el cliente se ha guardado correcatamente
+     */
     @Override
     public boolean guarda(Cliente c) {
         boolean guardado = false;
@@ -75,6 +105,11 @@ public class ClienteDAOList implements ClienteDAO {
         return guardado;
     }
 
+    /**
+     * @brief Función para borrar un cliente
+     * @param id
+     * @return True si el cliente se ha borrado correctamente
+     */
     @Override
     public boolean borra(Integer id) {
         

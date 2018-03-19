@@ -31,33 +31,12 @@
                                             <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
                                                 <div class="row">
                                                     <h4 class="card-title">${p.nombre}</h4>
-                                                    <p class="h5">${p.categoria}</p>
+                                                    <p class="h5">${p.descripcion}</p>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="h3">Precio:${p.precio}</p>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <%--<div class="row">--%>
-                                                        <div class="col-md-6">
-                                                            <p class="h3">Cantidad</p>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="h3">
-                                                                <div class="dropdown">
-                                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        1
-                                                                    </button>
-                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#">2</a>
-                                                                        <a class="dropdown-item" href="#">3</a>
-                                                                        <a class="dropdown-item" href="#">4</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                        </div>                                                
-                                                        <%--</div>--%>
-                                                    </div>
+                                                        <p class="h3">Precio: ${p.precio}€</p>
+                                                    </div>                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -76,8 +55,8 @@
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar"> 
 
                     <div class="btn-group-vertical">   
-                        <p>Total</p>
-
+                        <p class="h3">Total de la compra</p>
+                        <p class="h3">${p.precio}</p>
 
                     </div>
 

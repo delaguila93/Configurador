@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    ProductoController.java
+ * @Author  Jose María del Águila López
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
@@ -89,6 +89,7 @@ public class ProductosController extends HttpServlet {
         Log.log(Level.INFO, "Petición GET {0}", action);
 
         switch (action) {
+            //Para visualizar los productos según la categoría
             case "/visualizaCategoria": {
                 String categoria = request.getParameter("categoria");
                 request.setAttribute("productosCategoria", productoDAO.buscaCategoria(categoria));
@@ -97,7 +98,7 @@ public class ProductosController extends HttpServlet {
                 break;
 
             }
-
+            //Para mostrar todos los productos
             case "/productos": {
                 List<Producto> lp;
                 lp = productoDAO.buscaTodos();
@@ -105,6 +106,7 @@ public class ProductosController extends HttpServlet {
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
             }
+            //Para añadir un producto al pedido
             case "/anadeProducto": {
                 Producto p;
                 int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
@@ -116,12 +118,13 @@ public class ProductosController extends HttpServlet {
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
             }
+            //Para mostrar el pedido en la cesta
             case "/cesta": {
                 request.setAttribute("pedido", pedido);
                 rd = request.getRequestDispatcher(srvViewPath + "/cesta.jsp");
                 break;
             }
-
+            //Para mostrar todos los productos
             default: {
                 List<Producto> lp;
                 lp = productoDAO.buscaTodos();

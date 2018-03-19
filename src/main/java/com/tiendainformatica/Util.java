@@ -1,17 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    Util.java
+ * @Author  Jose María del Águila López
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
-/**
- *
- * @author delag
- */
+
 public class Util {
     
-    /**Limpia el parámetro o devuelve uno por defecto*/
+    
+    /**
+     * @brief Función para limpiar el parametro o devuelve un por defecto
+     * @param param
+     * @param defecto
+     * @return El paramertro limpio o uno por defecto
+     */
     public static String getParam(String param, String defecto) {        
         if (param!=null && !param.trim().equals(""))
             param=param.trim();
@@ -19,7 +22,12 @@ public class Util {
             param=defecto;
         return param;
     }
-    /**Devuelve true si el parámetro existe o false en caso contrario*/
+    
+    /**
+     * @brief Función que comprueba si un parametro existe
+     * @param param
+     * @return True si el parametro existe, False si el parametro no existe
+     */
     public static boolean getParamBool(String param) {
         boolean result=false;
         if (param!=null && !param.trim().equals(""))

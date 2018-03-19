@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file    Producto.java
+ * @Author  Jose María del Águila López
+ * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
 import java.io.Serializable;
 
-/**
- *
- * @author delag
- */
+
 public class Producto implements Serializable {
 
 
@@ -21,6 +18,9 @@ public class Producto implements Serializable {
     private double precio;
     private String categoria;
 
+    /**
+     * @brief Constructor de Producto
+     */
     public Producto() {
         id = 0;
         nombre = " ";
@@ -30,6 +30,9 @@ public class Producto implements Serializable {
         categoria = " ";
     }
 
+    /**
+     * @brief Constructor parametrizado de Producto
+     */
     public Producto(int _id, String _nom, String _img, String _des, double _prec, String _cat) {
         this.id = _id;
         this.nombre = _nom;
@@ -39,6 +42,9 @@ public class Producto implements Serializable {
         this.categoria = _cat;
     }
 
+    /**
+     * @brief Constructor Copia de Producto
+     */
     public Producto(Producto p) {
         this.id = p.id;
         this.nombre = p.nombre;
@@ -49,6 +55,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para obtener el nombre de un producto
      * @return the nombre
      */
     public String getNombre() {
@@ -56,6 +63,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para cambiar el nombre de un producto
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
@@ -63,6 +71,7 @@ public class Producto implements Serializable {
     }
     
     /**
+     * @brief Función para obtener una imagen
      * @return the imagen
      */
     public String getImagen() {
@@ -70,13 +79,15 @@ public class Producto implements Serializable {
     }
 
     /**
-     * @param imagen the imagen to set
+     * @brief Función para cambiar una imagen
+     * @param imagen
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
     
     /**
+     * @brief Función para obtener la descripción de un producto
      * @return the descripcion
      */
     public String getDescripcion() {
@@ -84,12 +95,15 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para canbiar la descripción de un producto
      * @param descripcion the descripcion to set
      */
     public void set(String descripcion) {
         this.descripcion = descripcion;
     }
+    
     /**
+     * @brief Función para obtener el precio de un producto
      * @return the precio
      */
     public double getPrecio() {
@@ -97,6 +111,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para cambiar el precio de un producto
      * @param precio the precio to set
      */
     public void setPrecio(double precio) {
@@ -104,6 +119,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para obtener la categoría de un producto
      * @return the categoria
      */
     public String getCategoria() {
@@ -111,6 +127,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para cambiar la categoría de un producto
      * @param categoria the categoria to set
      */
     public void setCategoria(String categoria) {
@@ -118,6 +135,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para obtener el id de un producto
      * @return the id
      */
     public int getId() {
@@ -125,6 +143,7 @@ public class Producto implements Serializable {
     }
 
     /**
+     * @brief Función para cambiar el id de un producto
      * @param id the id to set
      */
     public void setId(int id) {
