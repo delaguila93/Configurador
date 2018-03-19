@@ -30,7 +30,7 @@
                     <c:choose>
                         <c:when test="${not empty productosCategoria}">
                             <div class="container">
-                                <div class="row">
+                                <div class="row">                              
                                     <c:forEach var="p" items="${productosCategoria}">
                                         <c:set var="qry" value="?id=${p.id}"/>                  
                                         <div class="col-md-3" align="center">
@@ -39,20 +39,17 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">${p.nombre}</h4>
                                                     <p class="h5">${p.descripcion}</p>
-                                                    <p class="h5">${p.precio} €</p>
-                                                    <a href="#" class="btn btn-default"><p class="h4">Comprar</p></a>
+                                                    <p class="h5">${p.precio} €</p>                                       
+                                                    <a href='${srvUrl}/anadeProducto${qry}' class="btn btn-default" <p class="h4" >Añadir cesta</p></a> 
                                                 </div>
                                             </div>
                                             <br>        
                                         </div>
-
-                                    </c:forEach>
+                                    </c:forEach>                               
                                 </div>                        
                             </div>
-
-
                         </c:when>
-                        <c:when test="${empty producto}">
+                        <c:when test="${empty productosCategoria}">
                             <h1>No hay productos</h1>
                         </c:when>
                     </c:choose>

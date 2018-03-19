@@ -33,6 +33,9 @@ public class ProductosController extends HttpServlet {
     private String srvUrl;
     private static final Logger Log = Logger.getLogger(ProductosController.class.getName());
 
+    //Pedidos
+    private List<Producto> pedido = null;
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
 
@@ -40,7 +43,6 @@ public class ProductosController extends HttpServlet {
         srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
         productoDAO = new ProductoDAOList();
         categoriaDAO = new CategoriaDAO();
-        
 
     }
 
@@ -80,7 +82,7 @@ public class ProductosController extends HttpServlet {
 
         processRequest(request, response);
 
-        RequestDispatcher rd;
+        RequestDispatcher rd = null;
 
         //Detect current servlet action
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
@@ -93,17 +95,33 @@ public class ProductosController extends HttpServlet {
                 request.setAttribute("categoria", categoria);
                 rd = request.getRequestDispatcher(srvViewPath + "/visualizaCategoria.jsp");
                 break;
-            
+
             }
-            
-            case "/productos":{
+
+            case "/productos": {
                 List<Producto> lp;
                 lp = productoDAO.buscaTodos();
                 request.setAttribute("productoDAO", lp);
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
             }
-            
+            case "/anadeProducto": {
+                Producto p;
+                int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+                p = productoDAO.buscaId(id);
+                if (pedido == null) {
+                    pedido = new ArrayList<>();
+                }
+                pedido.add(p);
+                rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
+                break;
+            }
+            case "/cesta": {
+                request.setAttribute("pedido", pedido);
+                rd = request.getRequestDispatcher(srvViewPath + "/cesta.jsp");
+                break;
+            }
+
             default: {
                 List<Producto> lp;
                 lp = productoDAO.buscaTodos();
@@ -135,6 +153,28 @@ public class ProductosController extends HttpServlet {
 
         switch (action) {
 
+           case "/productos": {
+                Producto p;
+                int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+                p = productoDAO.buscaId(id);
+                if (pedido == null) {
+                    pedido = new ArrayList<>();
+                }
+                pedido.add(p);
+                response.sendRedirect(srvUrl + "/productos");
+                break;
+            }
+            case "/visualizaCategoria": {
+                Producto p;
+                int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
+                p = productoDAO.buscaId(id);
+                if (pedido == null) {
+                    pedido = new ArrayList<>();
+                }
+                pedido.add(p);
+                response.sendRedirect(srvUrl + "/productos");
+                break;
+            }
             default: {
                 response.sendRedirect(srvUrl);
             }
