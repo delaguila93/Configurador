@@ -22,16 +22,40 @@
                         <div class="btn-group-vertical">   
                             <c:forEach var="m" items="${categorias}">
                                 <center><a href='${srvUrl}/visualizaCategoria?categoria=${m}' class="btn btn-default" style='width:170px; height:50px'><p class="h5">${m}</p></a></center>
-                            </c:forEach>
+                                    </c:forEach>
                         </div>
                     </ul>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
-                    <div class="container">
-                        <div class="row">
-                            
-                        </div>
-                    </div>
+                    <c:choose>
+                        <c:when test="${not empty productosCategoria}">
+                            <div class="container">
+                                <div class="row">
+                                    <c:forEach var="p" items="${productosCategoria}">
+                                        <c:set var="qry" value="?id=${p.id}"/>                  
+                                        <div class="col-md-3" align="center">
+                                            <div class="card" style="width: 18rem;">
+                                                <img class="card-img-top" src="${p.imagen}" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">${p.nombre}</h4>
+                                                    <p class="h5">${p.descripcion}</p>
+                                                    <p class="h5">${p.precio} €</p>
+                                                    <a href="#" class="btn btn-default"><p class="h4">Comprar</p></a>
+                                                </div>
+                                            </div>
+                                            <br>        
+                                        </div>
+
+                                    </c:forEach>
+                                </div>                        
+                            </div>
+
+
+                        </c:when>
+                        <c:when test="${empty producto}">
+                            <h1>No hay productos</h1>
+                        </c:when>
+                    </c:choose>
                 </main>
             </div>
         </div>

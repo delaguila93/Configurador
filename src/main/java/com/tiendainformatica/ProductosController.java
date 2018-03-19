@@ -95,14 +95,14 @@ public class ProductosController extends HttpServlet {
                 break;
             
             }
-            /*
+            
             case "/productos":{
                 List<Producto> lp;
                 lp = productoDAO.buscaTodos();
                 request.setAttribute("productoDAO", lp);
                 rd = request.getRequestDispatcher(srvViewPath + "/productos.jsp");
                 break;
-            }*/
+            }
             
             default: {
                 List<Producto> lp;
