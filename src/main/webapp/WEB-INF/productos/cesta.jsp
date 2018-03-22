@@ -20,14 +20,12 @@
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
                     <div class="container">
                         <c:choose>
-                            <c:when test="${not empty pedido}">
-                                <p:forEach var="cat" items="${categorias}">
-                                    <c:forEach var="p" items="${pedido}">
-                                        <p:if test="${cat == p.categoria}">
+                            <c:when test="${not empty pedido}">                          
+                                    <c:forEach var="p" items="${pedido}">                                
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="col-md-2">
-                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.categoria}/${p.id}.jpg" alt="Card image cap">
+                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.id}.jpg" alt="Card image cap">
                                                     </div>
                                                     <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
                                                         <div class="row">
@@ -40,10 +38,8 @@
                                                             </div>                                                   
                                                         </div>
                                                     </div>
-                                                </div>
-                                        </p:if>
-                                    </c:forEach>
-                                </p:forEach>
+                                                </div>                                     
+                                    </c:forEach>                              
                             </c:when>
                             <c:when test="${empty pedido}">
                                 <h4>No ha productos para comprar</h4>

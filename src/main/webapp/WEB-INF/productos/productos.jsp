@@ -32,13 +32,12 @@
                         <p:when test="${not empty producto}">
                             <div class="container">
                                 <div class="row"> 
-                                    <p:forEach var="cat" items="${categorias}">
+                                    
                                         <p:forEach var="p" items="${producto}">
-                                            <p:set var="qry" value="?id=${p.id}"/>  
-                                            <p:if test="${cat == p.categoria}">
+                                            <p:set var="qry" value="?id=${p.id}"/>                                             
                                                 <div class="col-md-3" align="center">
                                                     <div class="card" style="width: 18rem;">
-                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${cat}/${p.id}.jpg" alt="Card image cap">
+                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.id}.jpg" alt="Card image cap">
                                                         <div class="card-body">
                                                             <h4 class="card-title">${p.nombre}</h4>
                                                             <p class="h5">${p.descripcion}</p>
@@ -47,10 +46,8 @@
                                                         </div>
                                                     </div>
                                                     <br>        
-                                                </div>
-                                            </p:if>
-                                        </p:forEach>
-                                    </p:forEach>
+                                                </div>                                           
+                                        </p:forEach>                                   
                                 </div>                        
                             </div>
 

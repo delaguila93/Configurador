@@ -35,7 +35,7 @@
                                         <c:set var="qry" value="?id=${p.id}"/>                  
                                         <div class="col-md-3" align="center">
                                             <div class="card" style="width: 18rem;">
-                                                <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${categoria}/${p.id}.jpg" alt="Card image cap">
+                                                <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.id}.jpg" alt="Card image cap">
                                                 <div class="card-body">
                                                     <h4 class="card-title">${p.nombre}</h4>
                                                     <p class="h5">${p.descripcion}</p>
