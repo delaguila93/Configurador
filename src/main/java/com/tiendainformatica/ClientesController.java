@@ -5,6 +5,9 @@
  */
 package com.tiendainformatica;
 
+import com.tiendainformatica.list.ClienteDAOList;
+import com.tiendainformatica.dao.ClienteDAO;
+import com.tiendainformatica.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;

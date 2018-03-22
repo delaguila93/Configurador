@@ -3,7 +3,7 @@
  * @Author  Jose María del Águila
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.model;
 
 import java.io.Serializable;
 import java.util.Date;

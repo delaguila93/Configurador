@@ -3,8 +3,9 @@
  * @Author  Jose María del Águila López
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.dao;
 
+import com.tiendainformatica.model.Producto;
 import java.util.List;
 
 

@@ -1,10 +1,14 @@
 /**
  * @file    ProductoController.java
- * @Author  Jose María del Águila López
- * @Author  Rafael Galán Ruiz
+ * @Author Jose María del Águila López
+ * @Author Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
+import com.tiendainformatica.list.ProductoDAOList;
+import com.tiendainformatica.dao.CategoriaDAO;
+import com.tiendainformatica.dao.ProductoDAO;
+import com.tiendainformatica.model.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -31,6 +35,7 @@ public class ProductosController extends HttpServlet {
     private CategoriaDAO categoriaDAO;
     private final String srvViewPath = "/WEB-INF/productos";
     private String srvUrl;
+    private String imgUrl;
     private static final Logger Log = Logger.getLogger(ProductosController.class.getName());
 
     //Pedidos
@@ -41,6 +46,7 @@ public class ProductosController extends HttpServlet {
 
         super.init(servletConfig);
         srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
+        imgUrl = servletConfig.getServletContext().getContextPath() + "/imagenes";
         productoDAO = new ProductoDAOList();
         categoriaDAO = new CategoriaDAO();
 
@@ -62,6 +68,7 @@ public class ProductosController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         request.setAttribute("srvUrl", srvUrl);
+        request.setAttribute("imgUrl", imgUrl);
         request.setAttribute("categorias", categoriaDAO.buscaTodos().toArray());
         request.setAttribute("producto", productoDAO.buscaTodos().toArray());
 
@@ -156,7 +163,7 @@ public class ProductosController extends HttpServlet {
 
         switch (action) {
 
-           case "/productos": {
+            case "/productos": {
                 Producto p;
                 int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
                 p = productoDAO.buscaId(id);

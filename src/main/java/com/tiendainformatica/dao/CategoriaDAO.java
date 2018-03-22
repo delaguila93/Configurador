@@ -3,7 +3,7 @@
  * @Author  Jose María del Águila
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.dao;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,8 +3,10 @@
  * @Author  Jose María del Águila
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.list;
 
+import com.tiendainformatica.dao.ClienteDAO;
+import com.tiendainformatica.model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 

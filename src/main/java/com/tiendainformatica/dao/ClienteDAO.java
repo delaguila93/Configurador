@@ -3,7 +3,9 @@
  * @Author  Jose María del Águila
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.dao;
+
+import com.tiendainformatica.model.Cliente;
 
 
 public interface ClienteDAO extends GenericDAO<Cliente, Integer> {

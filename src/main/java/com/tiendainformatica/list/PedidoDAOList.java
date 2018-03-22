@@ -3,7 +3,11 @@
  * @Author  Jose María del Águila López
  * @Author  Rafael Galán Ruiz
  */
-package com.tiendainformatica;
+package com.tiendainformatica.list;
+
+import com.tiendainformatica.dao.PedidoDAO;
+import com.tiendainformatica.model.Producto;
+import com.tiendainformatica.model.Pedido;
 
 
 public class PedidoDAOList implements PedidoDAO {

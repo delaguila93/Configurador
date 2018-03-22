@@ -4,8 +4,10 @@
  * @Author  Rafael Galán Ruiz
  */
 
-package com.tiendainformatica;
+package com.tiendainformatica.list;
 
+import com.tiendainformatica.dao.ProductoDAO;
+import com.tiendainformatica.model.Producto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +30,11 @@ public class ProductoDAOList implements ProductoDAO {
     public ProductoDAOList() {
         if (productos == null) {
             productos=new ArrayList<>();
-            productos.add(new Producto(idProducto++,"ASUS - Placa base","imagenes/placaBase.jpg","Placa de base para gaming con AURA Sync RGB LED, DDR4 3200MHz, M.2, USB 3.1 conector panel y tipo A/C",99.99,"Placa base"));
-            productos.add(new Producto(idProducto++,"AMD RYZEN 7","imagenes/amdRyzen.jpg","AMD RYZEN 7 1700- Procesador de 3.7 GHz, Socket AM4 con ventilador Wraith Spire incluido",149.45,"Procesadores"));
-            productos.add(new Producto(idProducto++,"Ballistix Sport LT","imagenes/ram.jpg","Ballistix Sport LT 4GB DDR4 2400 MT/s (PC4-19200) SR x8 DIMM 288-Pin - BLS4G4D240FSE (Rojo)",120,"Memoria RAM"));
-            productos.add(new Producto(idProducto++,"ASUS - Tarjeta gráfica","imagenes/grafica.jpg","ASUS STRIX-GTX1080-8G-GAMING - Tarjeta gráfica (Strix, NVIDIA GeForce GTX 1080, 8 GB, GDDR5X, DVI, HDMI, DP)",253.55,"Tarjeta Grafica"));
-            productos.add(new Producto(idProducto++,"Logitech G29","imagenes/mando.jpg","Logitech G29 - Volante para simulación de carreras con pedales incluidos, compatible con PS4, PS3 y PC",83,"Gaming"));
+            productos.add(new Producto(idProducto++,"ASUS - Placa base","/imagenes/placaBase.jpg","Placa de base para gaming con AURA Sync RGB LED, DDR4 3200MHz, M.2, USB 3.1 conector panel y tipo A/C",99.99,"Placa base"));
+            productos.add(new Producto(idProducto++,"AMD RYZEN 7","/imagenes/amdRyzen.jpg","AMD RYZEN 7 1700- Procesador de 3.7 GHz, Socket AM4 con ventilador Wraith Spire incluido",149.45,"Procesadores"));
+            productos.add(new Producto(idProducto++,"Ballistix Sport LT","/imagenes/ram.jpg","Ballistix Sport LT 4GB DDR4 2400 MT/s (PC4-19200) SR x8 DIMM 288-Pin - BLS4G4D240FSE (Rojo)",120,"Memoria RAM"));
+            productos.add(new Producto(idProducto++,"ASUS - Tarjeta gráfica","/imagenes/grafica.jpg","ASUS STRIX-GTX1080-8G-GAMING - Tarjeta gráfica (Strix, NVIDIA GeForce GTX 1080, 8 GB, GDDR5X, DVI, HDMI, DP)",253.55,"Tarjeta Grafica"));
+            productos.add(new Producto(idProducto++,"Logitech G29","/imagenes/mando.jpg","Logitech G29 - Volante para simulación de carreras con pedales incluidos, compatible con PS4, PS3 y PC",83,"Gaming"));
         }
     }
     

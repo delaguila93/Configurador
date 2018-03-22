@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="well">
-                        <center><img src="/imagenes/perfil.jpg" height="200" width="200" class="img-responsive img-rounded"></center>
+                        <center><img src="${pageContext.request.contextPath}/imagenes/perfil.jpg" height="200" width="200" class="img-responsive img-rounded"></center>
                     </div>
                 </div>
                 <div class="col-md-6">

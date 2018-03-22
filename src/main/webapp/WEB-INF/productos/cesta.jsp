@@ -21,33 +21,36 @@
                     <div class="container">
                         <c:choose>
                             <c:when test="${not empty pedido}">
-                                <c:forEach var="p" items="${pedido}">
-                                    <div class="card">
-
-                                        <div class="card-body">
-                                            <div class="col-md-2">
-                                                <img class="card-img-top" src="${p.imagen}" alt="Card image cap">
-                                            </div>
-                                            <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
-                                                <div class="row">
-                                                    <h4 class="card-title">${p.nombre}</h4>
-                                                    <p class="h5">${p.descripcion}</p>
+                                <p:forEach var="cat" items="${categorias}">
+                                    <c:forEach var="p" items="${pedido}">
+                                        <p:if test="${cat == p.categoria}">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="col-md-2">
+                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.categoria}/${p.id}.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
+                                                        <div class="row">
+                                                            <h4 class="card-title">${p.nombre}</h4>
+                                                            <p class="h5">${p.descripcion}</p>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p class="h3">Precio: ${p.precio}€</p>
+                                                            </div>                                                   
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <p class="h3">Precio: ${p.precio}€</p>
-                                                    </div>                                                   
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </p:if>
                                     </c:forEach>
-                                </c:when>
-                                <c:when test="${empty pedido}">
-                                    <h4>No ha productos para comprar</h4>
-                                </c:when>
+                                </p:forEach>
+                            </c:when>
+                            <c:when test="${empty pedido}">
+                                <h4>No ha productos para comprar</h4>
+                            </c:when>
 
-                            </c:choose>
-                        </div>
+                        </c:choose>
+                    </div>
 
 
 
