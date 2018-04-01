@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
+<Context path="/TiendaInformatica">
+    <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
               maxActive="25" 
               name="jdbc/TiendaInformatica" 
               password="ujaDaw" 
               type="javax.sql.DataSource" 
               url="jdbc:derby://localhost:1527/Tiendainformatica" 
               username="ujaDaw"/>
-<Context path="/TiendaInformatica"/>
+</Context>
