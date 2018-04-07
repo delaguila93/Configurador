@@ -31,33 +31,29 @@
                     <p:choose>
                         <p:when test="${not empty producto}">
                             <div class="container">
-                                <div class="row"> 
-                                    
-                                        <p:forEach var="p" items="${producto}">
-                                            <p:set var="qry" value="?id=${p.id}"/>                                             
-                                                <div class="col-md-3" align="center">
-                                                    <div class="card" style="width: 18rem;">
-                                                        <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.id}.jpg" alt="Card image cap">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">${p.nombre}</h4>
-                                                            <p class="h5">${p.descripcion}</p>
-                                                            <p class="h5">${p.precio} €</p>
-                                                            <a href='${srvUrl}/anadeProducto${qry}' class="btn btn-default"><p class="h4">Añadir cesta</p></a>
-                                                        </div>
-                                                    </div>
-                                                    <br>        
-                                                </div>                                           
-                                        </p:forEach>                                   
+                                <div class="row">                                  
+                                    <p:forEach var="p" items="${producto}">
+                                        <p:set var="qry" value="?id=${p.id}"/>                                             
+                                        <div class="col-md-3" align="center">
+                                            <div class="card" style="width: 18rem;">
+                                                <img class="card-img-top" src="${pageContext.request.contextPath}/imagenes/${p.id}.jpg" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">${p.nombre}</h4>
+                                                    <p class="h5">${p.descripcion}</p>
+                                                    <p class="h5">${p.precio} €</p>
+                                                    <a href='${srvUrl}/anadeProducto${qry}' class="btn btn-default"><p class="h4">Añadir cesta</p></a>
+                                                </div>
+                                            </div>
+                                            <br>        
+                                        </div>                                           
+                                    </p:forEach>                                   
                                 </div>                        
                             </div>
-
-
                         </p:when>
                         <p:when test="${empty producto}">
                             <h1>No hay productos</h1>
                         </p:when>
                     </p:choose>
-
                 </main>
             </div>
         </div>

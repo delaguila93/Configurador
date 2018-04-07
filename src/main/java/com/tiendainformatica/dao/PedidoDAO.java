@@ -5,7 +5,10 @@
  */
 package com.tiendainformatica.dao;
 
+import com.tiendainformatica.model.Cliente;
+import com.tiendainformatica.model.Pedido;
 import com.tiendainformatica.model.Producto;
+import java.util.*;
 
 
 public interface PedidoDAO  {
@@ -15,20 +18,18 @@ public interface PedidoDAO  {
      * @param p
      * @return true si el producto se ha añadidio
      */
-    public boolean anadeProducto(Producto p);
+    public boolean creaPedido(Producto p,int _idC,int cantidad);
     
-    /**
-     * @brief Función para eliminar un producto del Pedido
-     * @param id
-     * @return true si el pedidio se ha eliminado
-     */
-    public boolean eliminaProducto(int id);
+
     
     /**
      * @brief Función para calcular el total de un pedido
      * @param p
      * @return el total de pedido
      */
+    public List<Pedido> listaProductos(int idC);
+    
     public double calculaTotal(Producto p);
     
+    public boolean cambiarEstado(int id);
 }

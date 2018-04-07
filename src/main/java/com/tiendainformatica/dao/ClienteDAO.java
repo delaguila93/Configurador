@@ -17,4 +17,6 @@ public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
      */
     public boolean comprobarCorreo(String _corr);
     
+    public Cliente buscarCorreo(String _corr);
+    
 }

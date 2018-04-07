@@ -1,18 +1,18 @@
 /**
  * @file    Cliente.java
- * @Author  Jose María del Águila
- * @Author  Rafael Galán Ruiz
+ * @Author Jose María del Águila
+ * @Author Rafael Galán Ruiz
  */
 package com.tiendainformatica.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
-
 public class Cliente implements Serializable {
 
     private int id;
     private String correo;
+    private String clave;
     private String nombre;
     private String apellidos;
     private String fNac;
@@ -23,6 +23,7 @@ public class Cliente implements Serializable {
     public Cliente() {
         this.id = 0;
         this.correo = "";
+        this.clave = "";
         this.nombre = "";
         this.apellidos = "";
         this.fNac = "";
@@ -30,11 +31,13 @@ public class Cliente implements Serializable {
 
     /**
      * Constructor de copia de Cliente
-     * @param c 
+     *
+     * @param c
      */
     public Cliente(Cliente c) {
         this.id = c.id;
         this.correo = c.correo;
+        this.clave = c.clave;
         this.nombre = c.nombre;
         this.apellidos = c.apellidos;
         this.fNac = c.fNac;
@@ -43,14 +46,16 @@ public class Cliente implements Serializable {
     /**
      * @brief Constructor parametrizado de Cliente
      * @param _id
+     * @param _clav
      * @param _corr
      * @param _nom
      * @param _apell
-     * @param _f 
+     * @param _f
      */
-    public Cliente(int _id, String _corr, String _nom, String _apell, String _f) {
+    public Cliente(int _id, String _corr, String _clav, String _nom, String _apell, String _f) {
         this.id = _id;
         this.correo = _corr;
+        this.clave = _clav;
         this.nombre = _nom;
         this.apellidos = _apell;
         this.fNac = _f;
@@ -86,6 +91,20 @@ public class Cliente implements Serializable {
      */
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    /**
+     * @return the clave
+     */
+    public String getClave() {
+        return clave;
+    }
+
+    /**
+     * @param clave the clave to set
+     */
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     /**

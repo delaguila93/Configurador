@@ -1,7 +1,7 @@
 /**
  * @file    ClienteDAOList.java
- * @Author  Jose María del Águila
- * @Author  Rafael Galán Ruiz
+ * @Author Jose María del Águila
+ * @Author Rafael Galán Ruiz
  */
 package com.tiendainformatica.list;
 
@@ -10,40 +10,34 @@ import com.tiendainformatica.model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ClienteDAOList implements ClienteDAO {
 
     private List<Cliente> clientes;
     private static int idCliente = 1;
-    
+
     /**
-     * @brief Constructor de ClienteDAOList
-     * Los clientes contienen:
-     *                          idCliente
-     *                          Correo
-     *                          Nombre
-     *                          Apellidos
-     *                          Fecha de Nacimiento
+     * @brief Constructor de ClienteDAOList Los clientes contienen: idCliente
+     * Correo Nombre Apellidos Fecha de Nacimiento
      */
-    public ClienteDAOList(){
-        if(clientes==null){
-            clientes=new ArrayList<>();
-            clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","2012-12-12"));
-            clientes.add(new Cliente(idCliente++,"kkkkkk@jjjj.na","ggggg","tttttt","2052-11-09"));
+    public ClienteDAOList() {
+        if (clientes == null) {
+            clientes = new ArrayList<>();
+            /*clientes.add(new Cliente(idCliente++,"facundo@psoe.na","Facundo","Perez","2012-12-12"));
+            clientes.add(new Cliente(idCliente++,"kkkkkk@jjjj.na","ggggg","tttttt","2052-11-09"));*/
         }
     }
-    
+
     /**
      * @brief Función para coprobar el correo de un cliente
      * @param _corr
      * @return true si el correo se ha introducido correctamente
      */
     @Override
-    public boolean comprobarCorreo(String _corr){
-        boolean encontrado=false;
-        for(Cliente c :clientes){
-            if(c.getCorreo() == null ? _corr == null : c.getCorreo().equals(_corr)){
-                encontrado=true;
+    public boolean comprobarCorreo(String _corr) {
+        boolean encontrado = false;
+        for (Cliente c : clientes) {
+            if (c.getCorreo() == null ? _corr == null : c.getCorreo().equals(_corr)) {
+                encontrado = true;
             }
         }
         return encontrado;
@@ -114,15 +108,26 @@ public class ClienteDAOList implements ClienteDAO {
      */
     @Override
     public boolean borra(Integer id) {
-        
-        boolean result=false;
-        for (int i=0; i<clientes.size();i++) {
-            if (clientes.get(i).getId()==id) {
+
+        boolean result = false;
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == id) {
                 clientes.remove(i);
-                result=true;
+                result = true;
             }
         }
         return result;
+    }
+
+    @Override
+    public Cliente buscarCorreo(String _corr) {
+        Cliente encontrado = null;
+        for (Cliente c : clientes) {
+            if (c.getCorreo() == _corr) {
+                encontrado = c;
+            }
+        }
+        return encontrado;
     }
 
 }

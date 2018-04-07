@@ -7,6 +7,7 @@ package com.tiendainformatica;
 
 import com.tiendainformatica.list.ClienteDAOList;
 import com.tiendainformatica.dao.ClienteDAO;
+import com.tiendainformatica.jdbc.ClienteDAOJdbc;
 import com.tiendainformatica.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +39,8 @@ public class ClientesController extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
         srvUrl = servletConfig.getServletContext().getContextPath() + "/clientes";
-        clientes = new ClienteDAOList();
+        //clientes = new ClienteDAOList();
+        clientes = new ClienteDAOJdbc();
 
     }
 
@@ -89,7 +91,7 @@ public class ClientesController extends HttpServlet {
             //Para mostrar todos los clientes    
             case "/listado":
                 List<Cliente> lc = clientes.buscaTodos();
-                request.setAttribute("clientes", lc);
+                request.setAttribute("cliente", lc);
                 rd = request.getRequestDispatcher(srvViewPath + "/listadoClientes.jsp");
                 break;
             //Para editar el cliente

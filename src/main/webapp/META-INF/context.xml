@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/TiendaInformatica">
-    <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
-              maxActive="25" 
-              name="jdbc/TiendaInformatica" 
-              password="ujaDaw" 
-              type="javax.sql.DataSource" 
-              url="jdbc:derby://localhost:1527/Tiendainformatica" 
-              username="ujaDaw"/>
+  <Resource auth="Container" 
+            driverClassName="org.apache.derby.jdbc.ClientDriver" 
+            maxTotal="10" 
+            name="jdbc/tiendainformatica" 
+            password="ujaDaw" type="javax.sql.DataSource" 
+            url="jdbc:derby://localhost:1527/TiendaInformatica" 
+            username="ujaDaw"/>
+  <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+         dataSourceName="jdbc/tiendainformatica" 
+         localDataSource="true" 
+         roleNameCol="rol" 
+         userCredCol="clave" 
+         userNameCol="correo" 
+         userRoleTable="Roles" 
+         userTable="Cliente"/>
+  <!-- <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/> -->
 </Context>

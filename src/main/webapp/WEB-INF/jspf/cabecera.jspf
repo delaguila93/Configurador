@@ -13,15 +13,19 @@
                 <nav class="l">
                     <i class="fas fa-microchip fa-fw"></i>
                 </nav>
-                    <nav class="nav navbar-nav">
-                        <li class="presentation"><a class="h" href="<c:url value='/'/>">Inicio</a></li>
-                        <li class="presentation"><a class="h" href="<c:url value='/productos'/>">Productos</a></li>
-                        <li class="presentation"><a class="h" href="<c:url value='/productos/cesta'/>">Cesta</a></li>                        
-                        <li class="presentation"><a class="h" href="<c:url value='/clientes/perfil'/>">Acceder</a></li>
-                    </nav>      
+                <nav class="nav navbar-nav">
+                    <li class="presentation"><a class="h" href="<c:url value='/'/>">Inicio</a></li>
+                    <li class="presentation"><a class="h" href="<c:url value='/productos'/>">Productos</a></li>
+                    <li class="presentation"><a class="h" href="<c:url value='/productos/cesta'/>">Cesta</a></li>                        
+                    <li class="presentation"><a class="h" href="<c:url value='/clientes/perfil'/>">Acceder</a></li>
+                </nav>      
             </div>
+
         </div>
-    </div>    
+    </div>  
+    <c:if test="${not empty pageContext.request.remoteUser}">
+        <a class="nav-link border border-danger text-danger ml-md-auto" href="<c:url value="/Logout"/>">Desconectar ${pageContext.request.remoteUser}</a>
+    </c:if>
 </nav>
 <div class="jumbotron">
     <div class="container">

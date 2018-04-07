@@ -8,6 +8,7 @@ package com.tiendainformatica;
 import com.tiendainformatica.list.ProductoDAOList;
 import com.tiendainformatica.dao.CategoriaDAO;
 import com.tiendainformatica.dao.ProductoDAO;
+import com.tiendainformatica.jdbc.ProductoDAOJdbc;
 import com.tiendainformatica.model.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,7 +48,8 @@ public class ProductosController extends HttpServlet {
         super.init(servletConfig);
         srvUrl = servletConfig.getServletContext().getContextPath() + "/productos";
         imgUrl = servletConfig.getServletContext().getContextPath() + "/imagenes";
-        productoDAO = new ProductoDAOList();
+        //productoDAO = new ProductoDAOList();
+        productoDAO = new ProductoDAOJdbc();
         categoriaDAO = new CategoriaDAO();
 
     }

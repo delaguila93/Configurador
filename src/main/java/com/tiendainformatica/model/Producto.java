@@ -13,7 +13,6 @@ public class Producto implements Serializable {
 
     private int id;
     private String nombre;
-    private String imagen;
     private String descripcion;
     private double precio;
     private String categoria;
@@ -24,7 +23,6 @@ public class Producto implements Serializable {
     public Producto() {
         id = 0;
         nombre = " ";
-        imagen = " ";
         descripcion = " ";
         precio = 0.0;
         categoria = " ";
@@ -33,10 +31,9 @@ public class Producto implements Serializable {
     /**
      * @brief Constructor parametrizado de Producto
      */
-    public Producto(int _id, String _nom, String _img, String _des, double _prec, String _cat) {
+    public Producto(int _id, String _nom, String _des, double _prec, String _cat) {
         this.id = _id;
         this.nombre = _nom;
-        this.imagen = _img;
         this.descripcion = _des;
         this.precio = _prec;
         this.categoria = _cat;
@@ -48,7 +45,6 @@ public class Producto implements Serializable {
     public Producto(Producto p) {
         this.id = p.id;
         this.nombre = p.nombre;
-        this.imagen = p.imagen;
         this.descripcion = p.descripcion;
         this.precio = p.precio;
         this.categoria = p.categoria;
@@ -74,17 +70,6 @@ public class Producto implements Serializable {
      * @brief Función para obtener una imagen
      * @return the imagen
      */
-    public String getImagen() {
-        return imagen;
-    }
-
-    /**
-     * @brief Función para cambiar una imagen
-     * @param imagen
-     */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
     
     /**
      * @brief Función para obtener la descripción de un producto

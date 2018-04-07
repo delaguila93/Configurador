@@ -25,9 +25,8 @@
                             <span class='label label-danger'>${errNombre}</span><br/>
                             <label><p class="h4">Apellidos</p></label><input name="apellidos" value="${cliente.apellidos}" class="form-control" >
                             <label><p class="h4">Fecha de nacimiento</p></label><input name="fnac"value="${cliente.fNac}" class="form-control" type="date">
-                            <label><p class="h4">Contraseña</p></label><input name="contraseña" value="" class="form-control" type="password">    
+                            <label><p class="h4">Contraseña</p></label><input name="clave" value="" class="form-control" type="password">    
                             <br>
-                            <%--<center><a href="${srvUrl}/crea"><button type="submit" class="btn btn-default btn-lg" value="Registro"></button></a></center>--%>
                             <center><input name="enviar" type="submit" class="btn btn-default btn-lg" value="Registro"></center> 
                         </form>                    
                     </div>                  

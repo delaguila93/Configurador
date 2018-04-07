@@ -8,4 +8,72 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>Editar,Crear</display-name>
+        <web-resource-collection>
+            <web-resource-name>EDITAR</web-resource-name>
+            <description/>
+            <url-pattern>/clientes/edita</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Inicar sesion</web-resource-name>
+            <description/>
+            <url-pattern>/clientes/inicioSesion</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>USUARIO</role-name>
+            <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Listado</display-name>
+        <web-resource-collection>
+            <web-resource-name>Listado</web-resource-name>
+            <description/>
+            <url-pattern>/clientes/listado</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Borrar</web-resource-name>
+            <description/>
+            <url-pattern>/clientes/borra</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Editar</web-resource-name>
+            <description/>
+            <url-pattern>/clientes/edita*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Añadir cesta</display-name>
+        <web-resource-collection>
+            <web-resource-name>Añadir cesta</web-resource-name>
+            <description/>
+            <url-pattern>/productos/anadeProducto</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>ADMINISTRADOR</role-name>
+            <role-name>USUARIO</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/WEB-INF/clientes/inicioSesion.jsp</form-login-page>
+            <form-error-page>/WEB-INF/clientes/inicioSesion.jsp?error</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>ADMINISTRADOR</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>USUARIO</role-name>
+    </security-role>
 </web-app>
