@@ -42,7 +42,7 @@
                                     <a href='${srvUrl}/comprar' class="btn btn-default"><p class="h4">Comprar</p></a>
                                 </c:when>
                                 <c:when test="${empty pedido}">
-                                    <h4>No ha productos para comprar</h4>
+                                    <h4>No hay productos para comprar</h4>
                                 </c:when>
                             </c:choose>
                         </div>

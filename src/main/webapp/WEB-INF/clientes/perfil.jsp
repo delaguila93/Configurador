@@ -36,39 +36,41 @@
                 </c:if>
                 <c:if test="${not empty pageContext.request.remoteUser}">
                     <c:if test ="${pageContext.request.isUserInRole('ADMINISTRADOR')}">
-                        <div class="col-md-3 col-md-offset-3">
-                            <div class="well">
-                                <p class="h4">De manera temporal se puede ver el listado de socios de la pagina:</p>
-                                <br>  
-                                <center><a href='${srvUrl}/listado' ><button type="submit" class="btn btn-default"><p class="h4">Listado</p></button></a></center>
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="well">
+                                    <p class="h4" align="center">Listado de socios de la pagina:</p>
+                                    <br><br>
+                                    <center><a href='${srvUrl}/listado' ><button type="submit" class="btn btn-default"><p class="h4">Listado</p></button></a></center>
+                                </div>
                             </div>
-                        </div>
-                    </c:if>
-                    <c:if test ="${pageContext.request.isUserInRole('USUARIO')}">
-                        <div class="col-md-3 col-md-offset-2">
-                            <div class="well">
-                                <p class="h4">Puedes ver tus datos desde aqui:</p>
-                                <br>  
-                                <center><a href='${srvUrl}/visualiza' ><button type="submit" class="btn btn-default"><p class="h4">Visualizar</p></button></a></center>
+                        </c:if>
+                        <c:if test ="${pageContext.request.isUserInRole('USUARIO')}">
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="well">
+                                    <p class="h4" align="center">Puedes ver tus datos desde aqui:</p>
+                                    <br>  
+                                    <center><a href='${srvUrl}/visualiza' ><button type="submit" class="btn btn-default"><p class="h4">Visualizar</p></button></a></center>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="well">
+                                    <p class="h4" align="center">Puedes modificar tus datos desde aqui:</p>
+                                    <br>  
+                                    <center><a href='${srvUrl}/edita' ><button type="submit" class="btn btn-default"><p class="h4">Editar</p></button></a></center>
+                                </div>
+                            </div>
+                        </c:if>
                         <div class="col-md-3 col-md-offset-1">
                             <div class="well">
-                                <p class="h4">Puedes modificar tus datos desde aqui:</p>
-                                <br>  
-                                <center><a href='${srvUrl}/edita' ><button type="submit" class="btn btn-default"><p class="h4">Editar</p></button></a></center>
+                                <p class="h4" align="center">Puedes ver tus pedidos realizados desde aqui:</p>
+                                <br>
+                                <center><a href='${srvUrl}/visualiza' ><button type="submit" class="btn btn-default"><p class="h4">Visualizar Pedidos</p></button></a></center>
                             </div>
                         </div>
                     </c:if>
-                    <div class="col-md-3 col-md-offset-3">
-                        <div class="well">
-                            <p class="h4">Puedes ver tus pedidos realizados desde aqui:</p>
-                            <br>  
-                            <center><a href='${srvUrl}/visualizaPedido' ><button type="submit" class="btn btn-default"><p class="h4">Visualizar Pedidos</p></button></a></center>
-                        </div>
-                    </div>
-
-                </c:if>
+                </div>
             </div>
         </div>
         <%@include file="/WEB-INF/jspf/pie.jspf" %>

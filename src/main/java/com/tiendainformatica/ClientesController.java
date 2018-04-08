@@ -167,9 +167,7 @@ public class ClientesController extends HttpServlet {
                     rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
                     rd.forward(request, response);
                 }
-                break;
-            
-                    
+                break;        
             default: {
                 response.sendRedirect(srvUrl);
             }

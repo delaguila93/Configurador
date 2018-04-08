@@ -4,7 +4,7 @@
     Author     : José María del Águila López, Rafael Galán Ruiz
 --%>
 
-<%@ taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,11 +28,11 @@
                     </ul>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px4">
-                    <p:choose>
-                        <p:when test="${not empty producto}">
+                    <c:choose>
+                        <c:when test="${not empty producto}">
                             <div class="container">
                                 <div class="row">                                  
-                                    <p:forEach var="p" items="${producto}">
+                                    <c:forEach var="p" items="${producto}">
                                         <p:set var="qry" value="?id=${p.id}"/>                                             
                                         <div class="col-md-3" align="center">
                                             <div class="card" style="width: 18rem;">
@@ -46,14 +46,14 @@
                                             </div>
                                             <br>        
                                         </div>                                           
-                                    </p:forEach>                                   
+                                    </c:forEach>                                   
                                 </div>                        
                             </div>
-                        </p:when>
-                        <p:when test="${empty producto}">
+                        </c:when>
+                        <c:when test="${empty producto}">
                             <h1>No hay productos</h1>
-                        </p:when>
-                    </p:choose>
+                        </c:when>
+                    </c:choose>
                 </main>
             </div>
         </div>
