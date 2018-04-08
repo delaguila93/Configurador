@@ -111,6 +111,12 @@ public class ClientesController extends HttpServlet {
                 response.sendRedirect(srvUrl + "/listado");
                 return;
             }
+            //Para cerrar correctamente la sesión de un usuario
+            case "/logout":{                
+                request.logout();
+                request.getSession().invalidate();  
+            }
+            
             default:
                 rd = request.getRequestDispatcher(srvViewPath + "/perfil.jsp");
                 break;
@@ -162,6 +168,8 @@ public class ClientesController extends HttpServlet {
                     rd.forward(request, response);
                 }
                 break;
+            
+                    
             default: {
                 response.sendRedirect(srvUrl);
             }
