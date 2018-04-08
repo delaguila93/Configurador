@@ -1,7 +1,7 @@
 <%-- 
-    Document   : listadoClientes
-    Created on : 14-mar-2018, 12:31:46
-    Author     : delag
+    Document   : ListadoClientes.jps
+    Created on : 26-feb-2018, 19:04:27
+    Author     : José María del Águila López, Rafael Galán Ruiz
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

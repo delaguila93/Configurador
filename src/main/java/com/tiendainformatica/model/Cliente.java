@@ -1,6 +1,6 @@
 /**
  * @file    Cliente.java
- * @Author Jose María del Águila
+ * @Author Jose María del Águila López
  * @Author Rafael Galán Ruiz
  */
 package com.tiendainformatica.model;

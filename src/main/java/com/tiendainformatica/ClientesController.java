@@ -1,6 +1,6 @@
 /**
  * @file    ClienteController.java
- * @Author  Jose María del Águila
+ * @Author  Jose María del Águila lópez
  * @Author  Rafael Galán Ruiz
  */
 package com.tiendainformatica;
