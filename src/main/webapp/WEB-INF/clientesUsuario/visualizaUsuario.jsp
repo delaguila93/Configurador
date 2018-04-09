@@ -1,5 +1,5 @@
 <%-- 
-    Document   : inicio.jps
+    Document   : inicioSesion.jps
     Created on : 26-feb-2018, 19:04:27
     Author     : José María del Águila López, Rafael Galán Ruiz
 --%>

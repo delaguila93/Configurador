@@ -1,16 +1,20 @@
 /**
- * @file    ClienteController.java
- * @Author  Jose María del Águila lópez
- * @Author  Rafael Galán Ruiz
+ * @file   Login.java
+ * @Author Jose María del Águila López
+ * @Author Rafael Galán Ruiz
  */
 package com.tiendainformatica;
 
-import com.tiendainformatica.list.ClienteDAOList;
 import com.tiendainformatica.dao.ClienteDAO;
+import com.tiendainformatica.dao.PedidoDAO;
+import com.tiendainformatica.dao.ProductoDAO;
 import com.tiendainformatica.jdbc.ClienteDAOJdbc;
+import com.tiendainformatica.jdbc.PedidoDAOJdbc;
+import com.tiendainformatica.jdbc.ProductoDAOJdbc;
 import com.tiendainformatica.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,6 +22,8 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +33,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author delag
  */
-@WebServlet("/clientes/*")
-public class ClientesController extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/clientes/*"})
+public class Login extends HttpServlet {
 
     private ClienteDAO clientes;
+    private PedidoDAO pedidos;
+    private ProductoDAO productos;
     private final String srvViewPath = "/WEB-INF/clientes";
     private String srvUrl;
     private static final Logger Log = Logger.getLogger(ProductosController.class.getName());
@@ -39,8 +47,9 @@ public class ClientesController extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
         srvUrl = servletConfig.getServletContext().getContextPath() + "/clientes";
-        //clientes = new ClienteDAOList();
         clientes = new ClienteDAOJdbc();
+        pedidos = new PedidoDAOJdbc();
+        productos = new ProductoDAOJdbc();
 
     }
 
@@ -76,52 +85,38 @@ public class ClientesController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
         RequestDispatcher rd = null;
 
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
         Log.log(Level.INFO, "Petición GET {0}", action);
-
         switch (action) {
-            //Para crear el cliente
-            case "/crea":
+
+            case "/crea": {
                 Cliente c = new Cliente();
                 request.setAttribute("cliente", c);
                 rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
                 break;
-            //Para mostrar todos los clientes    
-            case "/listado":
-                List<Cliente> lc = clientes.buscaTodos();
-                request.setAttribute("cliente", lc);
-                rd = request.getRequestDispatcher(srvViewPath + "/listadoClientes.jsp");
-                break;
-            //Para editar el cliente
-            case "/edita":
-                Cliente ce;
-                int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
-                ce = clientes.buscaId(id);
-                request.setAttribute("cliente", ce);
-                rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
-                break;
-            //Para borrar al cliente
-            case "/borra": {      
-                int idB = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
-                if (idB > 0) {
-                    clientes.borra(idB);
+            }
+            case "/inicioSesion": {
+                if (request.isUserInRole("ADMINISTRADOR")) {
+                    rd = request.getRequestDispatcher("/clientesAdmin/inicioAdmin.jsp");
+                } else if (request.isUserInRole("USUARIO")) {
+                    rd = request.getRequestDispatcher("/");
                 }
-                response.sendRedirect(srvUrl + "/listado");
-                return;
-            }
-            //Para cerrar correctamente la sesión de un usuario
-            case "/logout":{                
-                request.logout();
-                request.getSession().invalidate();  
-            }
-            
-            default:
-                rd = request.getRequestDispatcher(srvViewPath + "/perfil.jsp");
                 break;
-        }
+            }
+            default:
+                if (request.getRemoteUser() == null) {
+                    rd = request.getRequestDispatcher(srvViewPath + "/perfil.jsp");
+                } else if (request.isUserInRole("USUARIO")) {
+                    rd = request.getRequestDispatcher("/clientesUsuario/inicioUsuario.jsp");
+                } else if (request.isUserInRole("ADMINISTRADOR")) {
+                    rd = request.getRequestDispatcher("/clientesAdmin/inicioAdmin.jsp");
+                }
+                break;
 
+        }
         rd.forward(request, response);
     }
 
@@ -142,14 +137,13 @@ public class ClientesController extends HttpServlet {
 
         //Detect current servlet action
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
-
         switch (action) {
             case "/crea": {
                 Cliente c = new Cliente();
                 if (validarCliente(request, c)) {
                     clientes.crea(c);
                     //Post-sent-redirect
-                    response.sendRedirect(srvUrl + "/listado");
+                    response.sendRedirect(request.getContextPath());
                 } else {
                     request.setAttribute("cliente", c);
                     rd = request.getRequestDispatcher(srvViewPath + "/registro.jsp");
@@ -157,50 +151,41 @@ public class ClientesController extends HttpServlet {
                 }
                 break;
             }
-            case "/edita":
-                Cliente c = new Cliente();
-                if (validarCliente(request, c)) {
-                    clientes.guarda(c);
-                    response.sendRedirect(srvUrl + "/listado");
-                } else {
-                    request.setAttribute("cliente", c);
-                    rd = request.getRequestDispatcher(srvViewPath + "/perfilUsuario.jsp");
-                    rd.forward(request, response);
-                }
-                break;        
-            default: {
-                response.sendRedirect(srvUrl);
-            }
         }
     }
 
     private boolean validarCliente(HttpServletRequest request, Cliente c) {
         boolean valido = true;
         //Capturamos y convertimos datos
+
         int id = Integer.parseInt(Util.getParam(request.getParameter("id"), "0"));
         String nombre = Util.getParam(request.getParameter("nombre"), "");
+        String clave = Util.getParam(request.getParameter("clave"), "");
         String apellidos = Util.getParam(request.getParameter("apellidos"), "");
         String correo = Util.getParam(request.getParameter("correo"), "");
         String fNac = Util.getParam(request.getParameter("fnac"), "");
 
         //Asignamos datos al Cliente
         c.setId(id);
+        c.setCorreo(correo);
+        c.setClave(clave);
         c.setNombre(nombre);
         c.setApellidos(apellidos);
-        c.setCorreo(correo);
         c.setfNac(fNac);
+        String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
         //Validamos Datos
         if (nombre.length() < 3 || nombre.length() > 50) {
             request.setAttribute("errNombre", "Nombre no válido");
             Log.log(Level.INFO, "Enviado Nombre de usuario no válido");
             valido = false;
         }
-        if (clientes.comprobarCorreo(correo) == true) {
-            request.setAttribute("errCorreo", "Ese correo ya existe");
-            Log.log(Level.INFO, "Enviado Correo no valido");
-            valido = false;
+        if (action == "/crea") {
+            if (clientes.comprobarCorreo(correo) == true) {
+                request.setAttribute("errCorreo", "Ese correo ya existe");
+                Log.log(Level.INFO, "Enviado Correo no valido");
+                valido = false;
+            }
         }
-
         return valido;
     }
 

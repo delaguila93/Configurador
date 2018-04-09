@@ -29,7 +29,7 @@
         </div>
     </div>  
     <c:if test="${not empty pageContext.request.remoteUser}">
-        <a class="nav-link border border-danger text-danger ml-md-auto" href="<c:url value='/clientes/logout'/>">Desconectar ${pageContext.request.remoteUser}</a>
+        <a class="nav-link border border-danger text-danger ml-md-auto" href="<c:url value='/Logout'/>">Desconectar ${pageContext.request.remoteUser}</a>
     </c:if>
 </nav>
 <div class="jumbotron">
